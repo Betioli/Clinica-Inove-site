@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pilates, fisioterapia e cuidados corporais em Ribeirão Preto. Aqui você respira, solta e volta a se sentir leve.">
+    <title>Clínica Inove - Estúdio de Movimento e Leveza</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: #4A4A4A; background: #FFF; line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3 { font-weight: 600; color: #2A2A2A; line-height: 1.2; }
+        h1 { font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(32px, 4vw, 40px); letter-spacing: -0.01em; }
+        h3 { font-size: clamp(20px, 2.5vw, 24px); font-weight: 500; }
+        p { font-size: 18px; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+        @media (max-width: 768px) { .container { padding: 0 24px; } }
+        
+        header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(117,47,146,0.08); transition: all 0.3s; }
+        header.scrolled { box-shadow: 0 4px 24px rgba(117,47,146,0.08); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 80px; }
+        @media (max-width: 768px) { nav { padding: 16px 24px; } }
+        .logo { font-size: 28px; font-weight: 600; color: #752F92; letter-spacing: -0.02em; text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: #4A4A4A; text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #752F92; transition: width 0.3s; }
+        .nav-links a:hover { color: #752F92; }
+        .nav-links a:hover::after { width: 100%; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .menu-toggle span { display: block; width: 24px; height: 2px; background: #752F92; margin: 5px 0; transition: all 0.3s; }
+        @media (max-width: 768px) {
+            .nav-links { position: fixed; top: 72px; right: -100%; flex-direction: column; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); width: 100%; padding: 32px 24px; gap: 24px; transition: right 0.3s; box-shadow: 0 8px 32px rgba(117,47,146,0.12); }
+            .nav-links.active { right: 0; }
+            .menu-toggle { display: block; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        }
+        
+        .btn { display: inline-block; padding: 16px 40px; border-radius: 12px; font-size: 17px; font-weight: 500; text-decoration: none; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); cursor: pointer; border: none; }
+        .btn-primary { background: #752F92; color: #FFF; box-shadow: 0 4px 16px rgba(117,47,146,0.2); }
+        .btn-primary:hover { background: #8B4AA8; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(117,47,146,0.3); }
+        .btn-secondary { background: #FFF; color: #752F92; box-shadow: 0 4px 16px rgba(117,47,146,0.2); }
+        .btn-secondary:hover { transform: scale(1.02); }
+        
+        section { position: relative; padding: 96px 0; }
+        @media (max-width: 768px) { section { padding: 64px 0; } }
+        .section-title { text-align: center; margin-bottom: 48px; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(180deg, #FDFBF9 0%, #FFF 100%); padding-top: 100px; }
+        .hero-background { position: absolute; top: -10%; right: -10%; width: 60%; height: 120%; background: radial-gradient(circle, rgba(117,47,146,0.08) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(2deg); } }
+        .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; gap: 32px; text-align: center; } }
+        .hero-text h1 { margin-bottom: 24px; animation: fadeInUp 0.8s ease-out; }
+        .hero-text p { margin-bottom: 32px; font-size: 20px; color: #5A5A5A; animation: fadeInUp 0.8s ease-out 0.2s both; }
+        .hero-cta { animation: fadeInUp 0.8s ease-out 0.4s both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-image { position: relative; animation: fadeIn 1s ease-out 0.3s both; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hero-image img { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 12px 48px rgba(117,47,146,0.12); animation: breathe 4s ease-in-out infinite; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        .hero-wave { position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; }
+        .hero-wave svg { position: relative; display: block; width: calc(100% + 1.3px); height: 80px; }
+        .hero-wave .shape-fill { fill: #FFF; }
+        
+        .identificacao { background: #FFF; padding: 96px 0; }
+        .identificacao-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .identificacao-content h2 { margin-bottom: 32px; color: #752F92; }
+        .pain-points { display: flex; flex-direction: column; gap: 16px; margin: 48px 0; }
+        .pain-points p { font-size: 20px; color: #5A5A5A; opacity: 0; transform: translateX(-20px); }
+        .pain-points p.visible { animation: slideInLeft 0.6s ease-out forwards; }
+        @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+        .transition-text { margin-top: 48px; font-size: 22px; font-weight: 500; color: #752F92; }
+        
+        .para-quem { background: linear-gradient(180deg, #FFF 0%, #FAF9F7 100%); padding: 96px 0; }
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
+        @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; } }
+        .card { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(117,47,146,0.08); border-radius: 20px; padding: 32px; text-align: center; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
+        .card.visible { animation: fadeInUp 0.6s ease-out forwards; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(117,47,146,0.08); }
+        .card-icon { width: 64px; height: 64px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: rgba(117,47,146,0.08); border-radius: 16px; }
+        .card-icon svg { width: 32px; height: 32px; stroke: #752F92; }
+        .card h3 { margin-bottom: 16px; color: #752F92; }
+        .card p { font-size: 16px; color: #5A5A5A; }
+        
+        .servicos { background: #FFF; padding: 96px 0; }
+        .servicos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 64px; }
+        @media (max-width: 768px) { .servicos-grid { grid-template-columns: 1fr; } }
+        .servico-card { position: relative; background: #FFF; border: 1px solid rgba(117,47,146,0.08); border-radius: 24px; overflow: hidden; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: scale(0.95); }
+        .servico-card.visible { animation: scaleIn 0.6s ease-out forwards; }
+        @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
+        .servico-card:first-child { grid-column: span 2; }
+        @media (max-width: 768px) { .servico-card:first-child { grid-column: span 1; } }
+        .servico-card:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(117,47,146,0.12); }
+        .servico-image { position: relative; height: 280px; overflow: hidden; }
+        .servico-card:first-child .servico-image { height: 350px; }
+        .servico-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .servico-card:hover .servico-image img { transform: scale(1.05); }
+        .servico-image::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to top, rgba(255,255,255,0.9), transparent); }
+        .servico-content { padding: 32px; }
+        .servico-content h3 { margin-bottom: 12px; font-size: 26px; }
+        .servico-content p { margin-bottom: 24px; color: #5A5A5A; font-size: 16px; }
+        .servico-link { display: inline-flex; align-items: center; gap: 8px; color: #752F92; text-decoration: none; font-weight: 500; transition: gap 0.3s; }
+        .servico-link:hover { gap: 12px; }
+        .servico-link svg { width: 20px; height: 20px; }
+        
+        .sobre { background: linear-gradient(135deg, #FAF9F7 0%, #FFF 100%); padding: 96px 0; }
+        .sobre-content { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        @media (max-width: 768px) { .sobre-content { grid-template-columns: 1fr; gap: 32px; } }
+        .sobre-text h2 { margin-bottom: 24px; color: #752F92; }
+        .sobre-text p { margin-bottom: 20px; font-size: 18px; line-height: 1.8; }
+        .sobre-image { position: relative; }
+        .sobre-blob { position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; background: rgba(117,47,146,0.08); border-radius: 50% 40% 60% 50%; z-index: 0; animation: blobFloat 6s ease-in-out infinite; }
+        @keyframes blobFloat { 0%, 100% { border-radius: 50% 40% 60% 50%; } 50% { border-radius: 40% 60% 50% 40%; } }
+        .sobre-image img { position: relative; z-index: 1; width: 100%; border-radius: 24px; box-shadow: 0 12px 48px rgba(117,47,146,0.12); }
+        
+        .depoimentos { background: #FFF; padding: 96px 0; }
+        .depoimentos-carousel { max-width: 900px; margin: 64px auto 0; position: relative; }
+        .depoimento { background: rgba(117,47,146,0.05); border-radius: 24px; padding: 48px; text-align: center; position: relative; display: none; }
+        .depoimento.active { display: block; animation: fadeIn 0.6s ease-out; }
+        .depoimento::before { content: '"'; position: absolute; top: 20px; left: 32px; font-size: 120px; color: rgba(117,47,146,0.15); font-family: Georgia, serif; line-height: 1; }
+        .depoimento-text { font-size: 20px; line-height: 1.8; color: #4A4A4A; margin-bottom: 24px; font-style: italic; }
+        .depoimento-autor { font-weight: 500; color: #752F92; font-size: 18px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(117,47,146,0.2); cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: #752F92; transform: scale(1.2); }
+        
+        .como-funciona { background: linear-gradient(180deg, #FFF 0%, #FAF9F7 100%); padding: 96px 0; }
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; position: relative; }
+        @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } }
+        .steps::before { content: ''; position: absolute; top: 40px; left: 16.66%; right: 16.66%; height: 2px; background: linear-gradient(to right, #752F92 0%, #752F92 50%, transparent 50%, transparent 100%); background-size: 20px 2px; z-index: 0; }
+        @media (max-width: 768px) { .steps::before { display: none; } }
+        .step { text-align: center; position: relative; z-index: 1; }
+        .step-number { width: 80px; height: 80px; margin: 0 auto 24px; background: #752F92; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; box-shadow: 0 8px 24px rgba(117,47,146,0.2); }
+        .step h3 { margin-bottom: 16px; color: #752F92; }
+        .step p { font-size: 16px; color: #5A5A5A; }
+        
+        .localizacao { background: #FFF; padding: 96px 0; }
+        .localizacao-content { max-width: 800px; margin: 64px auto 0; background: rgba(117,47,146,0.03); border-radius: 24px; padding: 48px; text-align: center; }
+        .localizacao-icon { width: 80px; height: 80px; margin: 0 auto 24px; background: #752F92; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .localizacao-icon svg { width: 40px; height: 40px; stroke: #FFF; }
+        .localizacao-content h3 { margin-bottom: 24px; color: #752F92; font-size: 28px; }
+        .endereco { font-size: 18px; line-height: 1.8; color: #4A4A4A; margin-bottom: 32px; }
+        .area-atendimento { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; margin-top: 24px; }
+        .area-atendimento p { font-size: 16px; color: #5A5A5A; }
+        
+        .cta-final { background: linear-gradient(135deg, #752F92 0%, #8B4AA8 100%); color: #FFF; padding: 96px 0; position: relative; overflow: hidden; }
+        .cta-final::before { content: ''; position: absolute; top: -50%; left: -10%; width: 40%; height: 200%; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 10s ease-in-out infinite; }
+        .cta-content { text-align: center; position: relative; z-index: 1; }
+        .cta-content h2 { color: #FFF; margin-bottom: 16px; }
+        .cta-content p { font-size: 20px; margin-bottom: 32px; color: rgba(255,255,255,0.9); }
+        .cta-horario { margin-top: 24px; font-size: 16px; color: rgba(255,255,255,0.8); }
+        
+        footer { background: #FFF; border-top: 1px solid rgba(117,47,146,0.08); padding: 64px 0 32px; }
+        .footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+        @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 32px; text-align: center; } }
+        .footer-col h4 { font-size: 18px; margin-bottom: 20px; color: #752F92; }
+        .footer-col p, .footer-col a { font-size: 16px; color: #5A5A5A; text-decoration: none; line-height: 1.8; display: block; margin-bottom: 8px; transition: color 0.3s; }
+        .footer-col a:hover { color: #752F92; }
+        .footer-tagline { color: #8E8E8E; font-size: 15px; margin-top: 12px; }
+        .social-link { display: inline-flex; align-items: center; gap: 8px; }
+        .social-link svg { width: 20px; height: 20px; }
+        .footer-bottom { text-align: center; padding-top: 32px; border-top: 1px solid rgba(117,47,146,0.08); color: #8E8E8E; font-size: 14px; }
+        
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="container">
+            <a href="index.html" class="logo">INOVE</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="pilates.html">Pilates</a></li>
+                <li><a href="fisioterapia.html">Fisioterapia</a></li>
+                <li><a href="drenagem.html">Drenagem</a></li>
+                <li><a href="massagem.html">Massagem</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Aqui você respira, solta e volta a se sentir leve.</h1>
+                <p>Pilates, fisioterapia e cuidados corporais para quem quer voltar a se mover sem dor e com mais leveza no dia a dia.</p>
+                <div class="hero-cta">
+                    <a href="https://wa.me/5516991778083?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o" class="btn btn-primary" target="_blank">Agendar pelo WhatsApp</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" alt="Pilates">
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,64 C240,10 480,90 720,70 C960,50 1200,100 1200,64 L1200,120 L0,120 Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="identificacao">
+        <div class="container">
+            <div class="identificacao-content animate-on-scroll">
+                <h2>Seu corpo está pedindo uma pausa</h2>
+                <div class="pain-points">
+                    <p>Aquele peso nas costas que não passa.</p>
+                    <p>O corpo travado, a tensão acumulada.</p>
+                    <p>A sensação de que você não se move como antes.</p>
+                </div>
+                <p class="transition-text">E se você pudesse voltar a se sentir leve de novo?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="para-quem">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>A Inove é para você</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Para quem sente dor e quer alívio real</h3>
+                    <p>Entendemos o que é viver com desconforto. Aqui você encontra cuidado especializado para voltar a se sentir bem.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Para quem quer voltar a se mover com leveza</h3>
+                    <p>Movimento é vida. Vamos te ajudar a reconectar com seu corpo e redescobrir a liberdade de se movimentar.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Para quem busca cuidado, não apenas tratamento</h3>
+                    <p>Aqui você não é só mais um paciente. Cada sessão é pensada especialmente para você.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicos">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Nossos serviços</h2>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-image">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80" alt="Pilates">
+                    </div>
+                    <div class="servico-content">
+                        <h3>Pilates</h3>
+                        <p>Pilates para reconectar corpo e movimento. Atendimento individual ou em pequenos grupos, focado no que você precisa.</p>
+                        <a href="pilates.html" class="servico-link">
+                            Conhecer o Pilates
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Fisioterapia">
+                    </div>
+                    <div class="servico-content">
+                        <h3>Fisioterapia</h3>
+                        <p>Fisioterapia para alívio da dor e recuperação. Tratamento humanizado e personalizado.</p>
+                        <a href="fisioterapia.html" class="servico-link">
+                            Saber mais
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-image">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Drenagem">
+                    </div>
+                    <div class="servico-content">
+                        <h3>Drenagem Linfática</h3>
+                        <p>Drenagem manual para leveza e bem-estar. Reduza inchaços e sinta seu corpo mais leve.</p>
+                        <a href="drenagem.html" class="servico-link">
+                            Entender a Drenagem
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-image">
+                        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" alt="Massagem">
+                    </div>
+                    <div class="servico-content">
+                        <h3>Massagem Relaxante</h3>
+                        <p>Massagem para soltar tensões e relaxar. Um momento só seu para recarregar as energias.</p>
+                        <a href="massagem.html" class="servico-link">
+                            Conhecer a Massagem
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-text animate-on-scroll">
+                    <h2>Cuidado que você sente na pele</h2>
+                    <p>Na Inove, você não é só mais um paciente.</p>
+                    <p>Aqui o atendimento é individual, atencioso e feito especialmente para você.</p>
+                    <p>Cada sessão é pensada no que o seu corpo está pedindo naquele momento.</p>
+                    <p>Sem pressa. Sem protocolo frio. Só cuidado de verdade.</p>
+                </div>
+                <div class="sobre-image animate-on-scroll">
+                    <div class="sobre-blob"></div>
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Ambiente">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoimentos">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>O que nossos pacientes dizem</h2>
+            </div>
+            <div class="depoimentos-carousel">
+                <div class="depoimento active">
+                    <p class="depoimento-text">Depois de meses com dor na lombar, finalmente encontrei um lugar onde me sinto realmente cuidada. Saio de cada sessão me sentindo outra pessoa.</p>
+                    <p class="depoimento-autor">— Maria S.</p>
+                </div>
+                <div class="depoimento">
+                    <p class="depoimento-text">O Pilates aqui é completamente diferente. Não é só exercício, é um momento só meu, onde eu consigo me reconectar com o meu corpo.</p>
+                    <p class="depoimento-autor">— Ana Paula R.</p>
+                </div>
+                <div class="depoimento">
+                    <p class="depoimento-text">Atendimento incrível, ambiente acolhedor. Parece que entro em outro mundo quando chego na Inove. Super recomendo!</p>
+                    <p class="depoimento-autor">— Juliana M.</p>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="como-funciona">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Como funciona</h2>
+            </div>
+            <div class="steps">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Entre em contato pelo WhatsApp</h3>
+                    <p>Manda uma mensagem e a gente conversa sobre o que você precisa</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Agende sua primeira sessão</h3>
+                    <p>Escolhemos juntos o melhor horário pra você</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Comece a se sentir melhor</h3>
+                    <p>Já na primeira sessão você sente a diferença</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="localizacao">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Onde a gente está</h2>
+            </div>
+            <div class="localizacao-content animate-on-scroll">
+                <div class="localizacao-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3>Nossa clínica</h3>
+                <div class="endereco">
+                    <p><strong>Rua Marechal Deodoro, 1499, Sala 2</strong></p>
+                    <p>Boulevard, Ribeirão Preto - SP</p>
+                    <p>CEP 14025-386</p>
+                </div>
+                <div class="area-atendimento">
+                    <p><strong>Área de atendimento:</strong> Jardim Sumaré e região</p>
+                    <p>Atendimento domiciliar disponível para casos específicos de fisioterapia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Que tal começar hoje?</h2>
+                <p>Seu corpo não precisa esperar mais para se sentir bem.</p>
+                <a href="https://wa.me/5516991778083?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o" class="btn btn-secondary" target="_blank">Falar com a gente pelo WhatsApp</a>
+                <p class="cta-horario">Atendemos de segunda a sábado, das 7h às 20h</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">INOVE</div>
+                    <p class="footer-tagline">Estúdio de movimento e leveza</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <a href="pilates.html">Pilates</a>
+                    <a href="fisioterapia.html">Fisioterapia</a>
+                    <a href="drenagem.html">Drenagem Linfática</a>
+                    <a href="massagem.html">Massagem Relaxante</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5516991778083" target="_blank">WhatsApp: (16) 99177-8083</a>
+                    <a href="https://www.instagram.com/clinicainoveribeirao/" target="_blank" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                        @clinicainoveribeirao
+                    </a>
+                    <p style="margin-top: 16px;">Boulevard, Ribeirão Preto - SP</p>
+                    <p>Seg-Sáb: 7h às 20h</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Clínica Inove — Feito com cuidado</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+        
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, observerOptions);
+        document.querySelectorAll('.animate-on-scroll, .card, .servico-card, .step').forEach(el => observer.observe(el));
+        
+        const painPoints = document.querySelectorAll('.pain-points p');
+        setTimeout(() => {
+            painPoints.forEach((p, i) => setTimeout(() => p.classList.add('visible'), i * 300));
+        }, 500);
+        
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.depoimento');
+        const dots = document.querySelectorAll('.dot');
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            if (n >= slides.length) currentSlide = 0;
+            if (n < 0) currentSlide = slides.length - 1;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        dots.forEach((dot, i) => dot.addEventListener('click', () => { currentSlide = i; showSlide(currentSlide); }));
+        setInterval(() => { currentSlide++; showSlide(currentSlide); }, 6000);
+    </script>
+</body>
+</html>
