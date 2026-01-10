@@ -286,13 +286,15 @@
             </div>
         </div>
     </section>
-    <div class="sobre-container">
-        <div class="sobre-background">
+    <section class="sobre">
+        <div class="sobre-container">
             <span img src="image/fundo-roxo-1.jpg" alt="Dra Emlyn"></span>
-        </div>
-        <div class="sobre-container-content">
-            <div class="sobre-content"> 
-                <div class="sobre-img"> <href><img src="image/Emlyn-removebg-preview.png" alt="Dra Emlyn"></href> </div>
+        
+                <div class="sobre-container-content">
+                <div class="sobre-content"> 
+                <div class="sobre-img">
+                    <a href="#"><img src="image/Emlyn-removebg-preview.png" alt="Dra Emlyn"></a> 
+                </div>
                 <div class="sobre-text">
                     <h2>Dra Emlyn</h2>
                     <p> Sou Fisioterapeuta por formação, mas principalmente por escolha de vida!
@@ -303,19 +305,49 @@
                         Meu propósito?
                         Ajudar pessoas a viverem com menos dor, mais qualidade de vida e mais conexão com o próprio corpo.
                         Corpo em movimento é vida — e eu estou aqui pra te lembrar disso todos os dias. 🤍</p>
+                    </div>
+        
                 </div>
+            </div>       
         
-            </div>
-        </div>       
-        
-    </div>
+        </div>
+    </section>
     <style>
-        .sobre-container {
-            position: relative;
-            background-color: #f9f9f9;
-            padding: 60px 20px;
-            overflow: hidden;
+        .sobre {
+            background: url('image/fundo-roxo-1.jpg') no-repeat center center;
+            padding: 0;
+            background-size: cover;
+            opacity: 0.9;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+
         }
+        .sobre-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        .sobre-container-content {
+            display: flex;
+            align-items: center;
+            
+        }
+        .sobre-img img {
+            width: 350px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(117,47,146,0.12);
+        }
+        .sobre-text h2 {
+            margin-bottom: 26px;
+            color: #fff;
+        }
+        .sobre-text p {
+            font-family: 'fonts/Montserrat-Regular.woff2';
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.9;
+        }
+
+
     </style>
 
     <section class="servicos">
