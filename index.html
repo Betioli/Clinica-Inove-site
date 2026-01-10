@@ -33,7 +33,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Montserrat', sans-serif; color: #4A4A4A; background: #FFF; line-height: 1.7; overflow-x: hidden; }
         h1, h2, h3 { font-weight: 400; color: #2A2A2A; line-height: 1.2; }
-        h1 { font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em; }
+        h1 { color: #fff; font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em; }
         h2 { font-size: clamp(32px, 4vw, 40px); letter-spacing: -0.01em; }
         h3 { font-size: clamp(20px, 2.5vw, 24px); font-weight: 500; }
         p { font-size: 18px; line-height: 1.7; }
@@ -74,14 +74,14 @@
         section { position: relative; padding: 96px 0; }
         @media (max-width: 768px) { section { padding: 64px 0; } }
         .section-title { text-align: center; margin-bottom: 48px; }
-        
-        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(180deg, #FDFBF9 0%, #FFF 100%); padding-top: 100px; }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(90deg, #752F92 5%, #742f925e 50%); padding-top: 100px; }
         .hero-background { position: absolute; top: -10%; right: -10%; width: 60%; height: 120%; background: radial-gradient(circle, rgba(117,47,146,0.08) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(2deg); } }
         .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
         @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; gap: 32px; text-align: center; } }
         .hero-text h1 { margin-bottom: 24px; animation: fadeInUp 0.8s ease-out; }
-        .hero-text p { margin-bottom: 32px; font-size: 20px; color: #5A5A5A; animation: fadeInUp 0.8s ease-out 0.2s both; }
+        .hero-text p { margin-bottom: 32px; font-size: 20px; color: #fff; animation: fadeInUp 0.8s ease-out 0.2s both; }
         .hero-cta { animation: fadeInUp 0.8s ease-out 0.4s both; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .hero-image { position: relative; animation: fadeIn 1s ease-out 0.3s both; }
@@ -218,7 +218,7 @@
         <div class="hero-background"></div>
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Aqui você respira, solta e volta a se sentir leve.</h1>
+                <h1>Seu corpo foi feito para se mover sem dor.</h1>
                 <p>Pilates, fisioterapia e cuidados corporais para quem quer voltar a se mover sem dor e com mais leveza no dia a dia.</p>
                 <div class="hero-cta">
                     <a href="https://wa.me/5516991778083?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o" class="btn btn-primary" target="_blank">Agendar pelo WhatsApp</a>
@@ -286,6 +286,65 @@
             </div>
         </div>
     </section>
+    <div class="sobre-container">
+        <div class="sobre-background">
+            <span img src="image/fundo-roxo-1.jpg" alt="Dra Emlyn"></span>
+        </div>
+        <div class="container">
+            <div class="sobre-content"> 
+                <div class="sobre-img">
+
+                </div>
+                <h2>Dra Emlyn</h2>
+                    <p> Sou Fisioterapeuta por formação, mas principalmente por escolha de vida!
+                        Fui acompanhar uma amiga em uma aula na faculdade e saí apaixonada sobre a forma como eles falavam sobre movimento, dor e cuidado.
+                        Eu lembro de pensar:
+                        “É isso — eu quero ajudar pessoas a se sentirem bem com o próprio corpo.”
+                        Hoje sou pós-graduada em Estética e em Fisioterapia Neurofuncional, com formações em Pilates, Liberação Miofascial, Bandagem Funcional e outros cursos que me ajudam a olhar cada paciente como um todo — físico, emocional e humano.
+                        Meu propósito?
+                        Ajudar pessoas a viverem com menos dor, mais qualidade de vida e mais conexão com o próprio corpo.
+                        Corpo em movimento é vida — e eu estou aqui pra te lembrar disso todos os dias. 🤍</p>
+                
+        
+            </div>
+        </div>       
+        
+    </div>
+    <style>
+        .sobre-container {
+            background-image: url('image/fundo-roxo-1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 96px 0;
+            color: #FFF;
+            z-index: -1;
+            height: 50vh;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+        }
+        .sobre-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+            color: #FFF;
+        }
+        .sobre-content h2 {
+            font-size: 36px;
+            color: #FFF;
+            z-index: 1;
+            text-align: left;
+            margin-top: 2px;
+        }
+        .sobre-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: auto;
+            margin-top: 1px;
+        }
+        .sobre-img {
+            align-items: left;
+        }
+    </style>
 
     <section class="servicos">
         <div class="container">
