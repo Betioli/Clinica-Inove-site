@@ -288,25 +288,19 @@
     </section>
     <section class="sobre">
         <div class="sobre-container">
-            <span img src="image/fundo-roxo-1.jpg" alt="Dra Emlyn"></span>
-        
-                <div class="sobre-container-content">
-                <div class="sobre-content"> 
+            <div class="sobre-content"> 
                 <div class="sobre-img">
-                    <a href="#"><img src="image/Emlyn-removebg-preview.png" alt="Dra Emlyn"></a> 
+                    <img src="image/Emlyn.jpg" alt="Dra Emlyn">
                 </div>
                 <div class="sobre-text">
-                    <h2>Dra Emlyn</h2>
-                    <p> Sou Fisioterapeuta por formação, mas principalmente por escolha de vida!
-                        Fui acompanhar uma amiga em uma aula na faculdade e saí apaixonada sobre a forma como eles falavam sobre movimento, dor e cuidado.
-                        Eu lembro de pensar:
-                        “É isso — eu quero ajudar pessoas a se sentirem bem com o próprio corpo.”
-                        Hoje sou pós-graduada em Estética e em Fisioterapia Neurofuncional, com formações em Pilates, Liberação Miofascial, Bandagem Funcional e outros cursos que me ajudam a olhar cada paciente como um todo — físico, emocional e humano.
-                        Meu propósito?
-                        Ajudar pessoas a viverem com menos dor, mais qualidade de vida e mais conexão com o próprio corpo.
-                        Corpo em movimento é vida — e eu estou aqui pra te lembrar disso todos os dias. 🤍</p>
-                    </div>
-        
+                    <h2>Dra Emlyn L. S. Rosa - Fisioterapeuta</h2>
+                    <p>Sou Fisioterapeuta por formação, mas principalmente por escolha de vida!</p>
+                    <p>Fui acompanhar uma amiga em uma aula na faculdade e saí apaixonada sobre a forma como eles falavam sobre movimento, dor e cuidado.</p>
+                    <a>Eu lembro de pensar: “É isso — eu quero ajudar pessoas a se sentirem bem com o próprio corpo.”</a>
+                    <p>Hoje sou pós-graduada em Estética e em Fisioterapia Neurofuncional, com formações em Pilates, Liberação Miofascial, Bandagem Funcional e outros cursos que me ajudam a olhar cada paciente como um todo — físico, emocional e humano.</p>
+                    <p>Meu propósito?<br>
+                    Ajudar pessoas a viverem com menos dor, mais qualidade de vida e mais conexão com o próprio corpo.<br>
+                    Corpo em movimento é vida — e eu estou aqui pra te lembrar disso todos os dias. 🤍</p>
                 </div>
             </div>       
         
@@ -315,36 +309,77 @@
     <style>
         .sobre {
             background: url('image/fundo-roxo-1.jpg') no-repeat center center;
-            padding: 0;
+            padding: 50px 10px;
             background-size: cover;
             opacity: 0.9;
-            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
-
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+            align-items: center;
         }
         .sobre-container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 0 80px;
-        }
-        .sobre-container-content {
-            display: flex;
+            padding: 0 10px;
             align-items: center;
-            
+        }
+        /*.sobre-container-content {
+            display: flex;
+            padding: 0 10px;
+            align-items: center;
+
+        }*/
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 390px 1fr; /* fixo para imagem, flexível para texto */
+            gap: 84px; /* diminui o espaço entre img e texto */
+            align-items: center;
         }
         .sobre-img img {
             width: 350px;
-            border-radius: 16px;
+            border-radius: 10px;
             box-shadow: 0 8px 32px rgba(117,47,146,0.12);
+            align-items: stretch;
+        }
+        .sobre-img {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-right: 0; /* remove margem extra */
+        }
+        .sobre-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 0; /* remove margem extra */
+            max-width: 100%;
         }
         .sobre-text h2 {
+            font-family: 'fonts/Montserrat-Bold.woff2';
             margin-bottom: 26px;
+            font-size: 38px;
+            padding-top: 10px;
             color: #fff;
         }
         .sobre-text p {
             font-family: 'fonts/Montserrat-Regular.woff2';
-            font-size: 18px;
+            font-size: 19px;
             color: #fff;
-            line-height: 1.9;
+            line-height: 1.8;
+        }
+        .sobre-text a {
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.5;
+            font-size: 19px;
+        }   
+        @media (max-width: 900px) {
+            .sobre-content {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                text-align: center;
+            }
+            .sobre-img {
+                justify-content: center;
+            }
         }
 
 
