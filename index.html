@@ -193,6 +193,33 @@
         
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        .sobre-img {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        .card-img {
+            position: absolute;
+            top: 20px;
+            left: 220px; /* ajuste conforme necessário para posicionar ao lado da foto principal */
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(117,47,146,0.12);
+            border: 2px solid #eee;
+        }
+        .card-img img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -289,8 +316,11 @@
     <section class="sobre">
         <div class="sobre-container">
             <div class="sobre-content"> 
-                <div class="sobre-img">
+                <div class="sobre-img"style="position: relative;">
                     <img src="image/Emlyn.jpg" alt="Dra Emlyn">
+                    <div class="card-img-2"> 
+                        <img src="image/Estetica.png" alt="Estetica">
+                    </div>
                 </div>
                 <div class="sobre-text">
                     <h2>Dra Emlyn L. S. Rosa - Fisioterapeuta</h2>
@@ -328,13 +358,32 @@
             gap: 84px; /* diminui o espaço entre img e texto */
             align-items: center;
         }
-        .sobre-img img {
+        .sobre-img img{
             width: 350px;
             border-radius: 10px;
             box-shadow: 0 8px 32px rgba(117,47,146,0.12);
             align-items: stretch;
         }
         
+        .card-img-2 {
+            position: absolute;
+            top: 20px;
+            left: 1220px; 
+            width: 90px;
+            height: 90px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+        }
+        .card-img-2 img {
+            width: 199px;
+            margin-top: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
         .sobre-text {
             display: flex;
             flex-direction: column;
