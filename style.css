@@ -293,7 +293,7 @@
             flex-direction: column;
             justify-content: center;
         }
-        .servico-content h3 { margin-bottom: 12px; font-size: 26px; color: #752F92; font-weight: 300; font-size: 25px; }
+        .servico-content h3 { margin-bottom: 12px; font-size: 26px; color: #752F92; font-weight: 500; }
         .servico-content p { margin-bottom: 24px; color: #5A5A5A; font-size: 16px; }
         .servico-link { display: inline-flex; align-items: center; gap: 8px; color: #752F92; text-decoration: none; font-weight: 500; transition: gap 0.3s; }
         .servico-link:hover { gap: 12px; }
@@ -305,14 +305,14 @@
         /* ==========================================================================
         ----------SOBRE TREINAR CONOSCO------------
         ==========================================================================*/
-        .sobre { background: linear-gradient(135deg, #FAF9F7 0%, #FFF 100%); padding: 46px 0; border: 1px solid red; }
+        .sobre { background: #eee0f96e; padding: 46px 0; margin-top: 50px;}
         .sobre-content { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
         @media (max-width: 768px) { .sobre-content { grid-template-columns: 1fr; gap: 32px; } }
         .sobre-text h2 { font-weight: 500; margin-bottom: 24px; color: #752F92; font-size: 25px; font-family: 'Montserrat', sans-serif; }
-        .sobre-text p { margin-bottom: 20px; font-size: 20px; line-height: 1.8; }
-        .sobre-text a { margin-bottom: 20px; font-size: 20px; line-height: 1.8; }
+        .sobre-text p { margin-bottom: 20px; font-size: 18px; line-height: 1.8; }
+        .sobre-text a { margin-bottom: 20px; font-size: 18px; line-height: 1.8; }
         .sobre-image { position: relative; }
-        .sobre-blob { position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; background: rgba(117,47,146,0.08); border-radius: 50% 40% 60% 50%; z-index: 0; animation: blobFloat 6s ease-in-out infinite; }
+        .sobre-blob { position: absolute; top: -20px; bottom:-20px; left:-20px; right: -20px; width: 110%; height: 110%; background: rgba(117,47,146,0.29); border-radius: 20px; z-index: 0; animation: blobFloat 6s ease-in-out infinite; }
         @keyframes blobFloat { 0%, 100% { border-radius: 50% 40% 60% 50%; } 50% { border-radius: 40% 60% 50% 40%; } }
         .sobre-image img { position: relative; z-index: 1; width: 100%; border-radius: 24px; box-shadow: 0 12px 48px rgba(117,47,146,0.12); }
         /*Sobre FIM*/
@@ -324,10 +324,12 @@
         .como-funciona-depoimentos {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px; 
+            gap: 1 4px; 
             background: linear-gradient(180deg, #FFF 0%, #FAF9F7 100%); 
             padding: 96px 0; 
-            border:#752F92 1px solid; 
+            border:#752F92 1px solid;
+            height: 95vh;
+            
         }
         @media (max-width: 1100px) {
             .como-funciona-depoimentos {
@@ -337,25 +339,34 @@
         }
         
         /* NOVO: Steps em coluna com linha tracejada vertical */
-        .container-coomo-funciona {
+        .container-como-funciona {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 100%;
+            height: 70vh;
+            border-right: #D62F39 5px solid;
+
+            
+        }
+        .como-funciona-title h2 {
+            color: #D62F39;
+            margin-bottom: 24px; 
+            font-size: 28px;
+            text-align: center;
         }
         .steps {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             position: relative;
-            margin-top: 4px;
-            gap: 140px; /* Aumentado o gap entre os steps */
+            margin-top: 1px;
+            gap: 80px; /* Aumentado o gap entre os steps */
             min-height: 340px;
         }
         .steps::before {
             content: '';
             position: absolute;
-            left: 90px;
+            left: 79px;
             top: 40px;
             width: 0;
             height: calc(100% - 80px);
@@ -382,15 +393,15 @@
             gap: 0 32px; /* Espaço horizontal entre número e texto */
         }
         .step-number { 
-            width: 80px; 
-            height: 80px; 
+            width: 60px; 
+            height: 60px; 
             background: #752F92; 
             color: #FFF; 
             border-radius: 50%; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-size: 32px; 
+            font-size: 22px; 
             font-weight: 600; 
             box-shadow: 0 8px 24px rgba(117,47,146,0.2); 
             flex-shrink: 0;
@@ -402,7 +413,7 @@
         .step-content {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* Espaço entre h3 e p */
+            gap: 1px; /* Espaço entre h3 e p */
         }
         .step h3, .step p {
             text-align: left;
@@ -410,7 +421,7 @@
         .step h3 {
             margin-bottom: 0;
             color: #752F92;
-            font-size: 22px;
+            font-size: 18px;
         }
         .step p {
             font-size: 16px;
