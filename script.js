@@ -1,5 +1,4 @@
-        
-        const menuToggle = document.getElementById('menuToggle');
+const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
@@ -29,16 +28,60 @@
             painPoints.forEach((p, i) => setTimeout(() => p.classList.add('visible'), i * 300));
         }, 500);
         
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.depoimento');
-        const dots = document.querySelectorAll('.dot');
-        function showSlide(n) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            if (n >= slides.length) currentSlide = 0;
-            if (n < 0) currentSlide = slides.length - 1;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-        dots.forEach((dot, i) => dot.addEventListener('click', () => { currentSlide = i; showSlide(currentSlide); }));
-        setInterval(() => { currentSlide++; showSlide(currentSlide); }, 6000);
+        // Substituir/estender a lógica antiga de depoimentos por esta nova implementação de slider em grupos de 3.
+
+document.addEventListener('DOMContentLoaded', () => {
+    const depoimentos = Array.from(document.querySelectorAll('.depoimento'));
+    if (depoimentos.length === 0) return;
+
+    const perSlide = 3; // 3 depoimentos por página
+    const slides = [];
+    const sliderInner = document.querySelector('.slider-inner');
+    const dotsContainer = document.querySelector('.carousel-dots');
+
+    // Agrupa depoimentos em slides de 3
+    for (let i = 0; i < depoimentos.length; i += perSlide) {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        depoimentos.slice(i, i + perSlide).forEach(el => slide.appendChild(el));
+        sliderInner.appendChild(slide);
+        slides.push(slide);
+    }
+
+    // Cria 3 dots (um para cada página)
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => {
+            showSlide(i);
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    let currentSlide = 0;
+
+    function updateDots() {
+        Array.from(dotsContainer.children).forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function showSlide(n) {
+        currentSlide = (n + slides.length) % slides.length;
+        sliderInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    }
+
+    // Setas de navegação
+    document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+    });
+
+    document.querySelector('.slider-arrow.next').addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+    });
+
+    // Inicializa o carrossel
+    showSlide(0);
+});
