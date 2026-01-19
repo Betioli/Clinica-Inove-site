@@ -453,11 +453,12 @@
             padding: 40px 20px; 
             text-align: center; 
             position: relative; 
-            height: 90vh; 
+            min-height: 90vh;
+            height: auto; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            overflow: hidden; /* Para esconder slides extras */
+             /* Para esconder slides extras */
         }
 
         .depoimentos-title {
@@ -468,7 +469,8 @@
         .depoimentos-title h2 {
             font-size: 32px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            ;
         }
 
         .container-depoimentos {
@@ -476,6 +478,7 @@
             margin: 0 auto;
             width: 100%;
             position: relative;
+            ;
         }
 
         /* Container do carrossel */
@@ -486,21 +489,22 @@
         }
 
         /* Slides container */
-        .slides-container {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%; /* 3 slides = 300% */
+        .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
         }
 
+
         /* Slide individual */
-        .slide {
-            flex: 0 0 100%; /* Cada slide ocupa 100% da largura do container */
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
-            grid-template-columns: 1fr;
-            gap: 30px;
-            padding: 0 30px;
-            box-sizing: border-box;
+        .carousel-slide {
+        flex: 0 0 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 COLUNAS FIXAS */
+        gap: 30px;
+        padding: 0 30px;
+        box-sizing: border-box;
+        align-items: flex-start;
         }
 
         /* Card de depoimento */
@@ -517,6 +521,12 @@
             transition: transform 0.3s ease;
             border: 1px solid rgba(117, 47, 146, 0.2);
         }
+        .depoimentos-coluna {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        }
+   
 
         .depoimento:hover {
             transform: translateY(-5px);
@@ -542,7 +552,7 @@
         }
 
         /* Setas de navegação */
-        .slider-arrow {
+        .carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -562,16 +572,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .slider-arrow:hover {
+        .carousel-arrow:hover {
             background: #8B4AA8;
             transform: translateY(-50%) scale(1.1);
         }
 
-        .slider-arrow.prev {
+        .carousel-arrow.prev {
             left: 10px;
         }
 
-        .slider-arrow.next {
+        .carousel-arrow.next {
             right: 10px;
         }
 
@@ -581,7 +591,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 40px;
-            gap: 12px;
+            gap: 12px;          
         }
 
         .carousel-dots .dot {
@@ -604,9 +614,9 @@
 
         /* Responsividade */
         @media (max-width: 1024px) {
-            .slide {
+            .carousel-slide {
                 grid-template-columns: repeat(2, 1fr); /* 2 colunas no tablet */
-                gap: 20px;
+                /*gap: 20px;*/
             }
             
             .depoimentos {
@@ -619,8 +629,8 @@
         @media (max-width: 768px) {
             .slide {
                 grid-template-columns: 1fr; /* 1 coluna no mobile */
-                gap: 20px;
-                padding: 0 10px;
+                /*gap: 20px;
+                padding: 0 10px;*/
             }
             
             .depoimento {
@@ -628,17 +638,17 @@
                 padding: 20px;
             }
             
-            .slider-arrow {
+            .carousel-arrow {
                 width: 40px;
                 height: 40px;
                 font-size: 18px;
             }
             
-            .slider-arrow.prev {
+            .carousel-arrow.prev {
                 left: 5px;
             }
             
-            .slider-arrow.next {
+            .carousel-arrow.next {
                 right: 5px;
             }
             

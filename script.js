@@ -30,58 +30,62 @@ const menuToggle = document.getElementById('menuToggle');
         
         // Substituir/estender a lógica antiga de depoimentos por esta nova implementação de slider em grupos de 3.
 
+// Substituir/estender a lógica antiga de depoimentos por esta nova implementação de slider em grupos de 3.
+
 document.addEventListener('DOMContentLoaded', () => {
-    const depoimentos = Array.from(document.querySelectorAll('.depoimento'));
-    if (depoimentos.length === 0) return;
 
-    const perSlide = 3; // 3 depoimentos por página
-    const slides = [];
-    const sliderInner = document.querySelector('.slider-inner');
-    const dotsContainer = document.querySelector('.carousel-dots');
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(document.querySelectorAll('.carousel-dots .dot'));
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
 
-    // Agrupa depoimentos em slides de 3
-    for (let i = 0; i < depoimentos.length; i += perSlide) {
-        const slide = document.createElement('div');
-        slide.className = 'slide';
-        depoimentos.slice(i, i + perSlide).forEach(el => slide.appendChild(el));
-        sliderInner.appendChild(slide);
-        slides.push(slide);
-    }
-
-    // Cria 3 dots (um para cada página)
-    slides.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        dot.dataset.index = i;
-        dot.addEventListener('click', () => {
-            showSlide(i);
-        });
-        dotsContainer.appendChild(dot);
-    });
+    if (!track || slides.length === 0) return;
 
     let currentSlide = 0;
+    const totalSlides = slides.length;
 
-    function updateDots() {
-        Array.from(dotsContainer.children).forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
+    function updateCarousel() {
+        const offset = currentSlide * 100;
+        track.style.transform = `translateX(-${offset}%)`;
+
+        // Atualiza dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
     }
 
-    function showSlide(n) {
-        currentSlide = (n + slides.length) % slides.length;
-        sliderInner.style.transform = `translateX(-${currentSlide * 100}%)`;
-        updateDots();
+    function goToSlide(index) {
+        if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            currentSlide = 0;
+        } else {
+            currentSlide = index;
+        }
+        updateCarousel();
     }
 
-    // Setas de navegação
-    document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
-        showSlide(currentSlide - 1);
+    // Eventos das setas
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+        });
+    }
+
+    // Eventos dos dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
     });
 
-    document.querySelector('.slider-arrow.next').addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-    });
-
-    // Inicializa o carrossel
-    showSlide(0);
+    // Inicializa
+    updateCarousel();
 });
