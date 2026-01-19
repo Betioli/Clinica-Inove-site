@@ -449,25 +449,53 @@
         ========================================================================== */
 
         .depoimentos {
-            background: #FFF;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
+            background: red;
+            padding: 10px 40px;
             align-items: center;
             justify-content: center;
             height: 90vh;
         } 
-        .container-depoimentos 
-        .depoimentos-carousel 
-        .carousel-track 
-        .carousel-slide 
-        .depoimentos-coluna
-        .depoimento
-        .depoimento-text
-        .depoimento-autor
-        .carousel-nav
-        .carousel-arrow.prev
-        .carousel-dots
+        .container-depoimentos {
+        }
+        .depoimentos-title h2 {
+            color: #fff;
+            margin-bottom: 4px; 
+            font-size: 28px;
+            text-align: center;
+        }
+        .depoimentos-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        } 
+        .carousel-track {
+            display: flex;
+        } 
+        .carousel-slide {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 16px;
+            gap: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; } 
+        
+            .depoimentos-coluna {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(117,47,146,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(117,47,146,0.08);
+        }
+        .depoimento { margin-bottom: 16px; }
+        .depoimento-text { font-size: 16px; color: #5A5A5A; line-height: 1.6; margin-bottom: 24px; }
+        .depoimento-autor{ display: flex; align-items: center; gap: 16px; }
+        .carousel-nav{ position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+        .carousel-arrow.prev{ left: 16px; }
+        .carousel-dots{ position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
 
         
         /*COMO FUNCIONA-DEPIMENTOS FIM*/
