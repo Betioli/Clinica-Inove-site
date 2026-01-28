@@ -209,14 +209,31 @@
         .sobre-image img { position: relative; z-index: 1; width: 100%; border-radius: 24px; box-shadow: 0 12px 48px rgba(117,47,146,0.12); }        
 
         /* ==========================================================================
-        DEPOIMENTOS - CARROSSEL 3 COLUNAS
+        DEPOIMENTOS - CARROSSEL 1 COLUNAS
         ========================================================================== */
         .depoimentos {
+        height: 600px;
         background: url('image/depoimentos-fundo-roxo-2.jpg');
         background-size: cover; /* Faz a imagem cobrir toda a área */
         background-position: center; /* Centraliza a imagem */
         background-repeat: no-repeat; /* Evita repetição */
         padding: 56px 0;
+        }
+        .avaliacao-google {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        }
+
+        .google-icon {
+        width: 20px;
+        height: 20px;
+        }   
+
+        .avaliacao-google span {
+        font-size: 0.9rem;
+        color: #666;
         }
         .depoimentos::before {
         content: '';
@@ -239,23 +256,19 @@
             font-size: 28px;
             text-align: center;
         }
-        .depoimentos-carousel { max-width: 900px; margin: 24px auto 0; position: relative; }
-        .depoimento { background: #c17ae5; border-radius: 24px; padding: 48px; text-align: center; position: relative; display: none; }
-        .depoimento.active { display: block; animation: fadeIn 0.6s ease-out; }
-        .depoimento::before { content: url('image/icon-google-logo-48.png'); 
-        position: absolute; 
-        top: 15px; 
-        left: 15px; 
-        width: 20px; 
-        height: 20px; 
-        transform: scale(0.7); 
-        transform-origin: top left;
-        }
+        .depoimentos-carousel { max-width: 750px; margin: 24px auto 0; position: relative; height: auto; }
+        .depoimento { background: rgb(192, 192, 192); border-radius: 24px; padding: 48px; text-align: center; position: relative; display: none; }
+        .depoimento.active { display: block; animation: fadeIn 0.6s ease-out; height: 220px;}
+        
         .depoimento-text { font-size: 17px; line-height: 1.8; color: #000000; margin-bottom: 24px; font-style: italic; border-bottom: 1px solid black;}
         .depoimento-autor { font-weight: 500; color: #752F92; font-size: 18px; }
         .carousel-dots { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; background: rgb(0, 0, 0); cursor: pointer; transition: all 0.3s; }
         .dot.active { background: #fff; transform: scale(1.2); }
+
+        .cta-depoimentos { padding-top: 20px; text-align: center; position: relative; z-index: 1; }
+        
+        .cta-depoimentos h2 { color: #FFF; margin-bottom: 16px; }
         
         /* ==========================================================================
         COMO FUNCIONA
@@ -554,27 +567,75 @@
                 <h2>O QUE NOSSOS PACIENTES DIZEM</h2>
             </div>
             <div class="depoimentos-carousel">
-                <div class="depoimento active">
-                    <p class="depoimento-text">Depois de meses com dor na lombar, finalmente encontrei um lugar onde me sinto realmente cuidada. Saio de cada sessão me sentindo outra pessoa.</p>
-                    <p class="depoimento-autor">— Maria S.</p>
+                <div class="avaliacao-google">
+                <img src="image/icon-google-logo-48.png" alt="Google" class="google-icon"><span>(5,0)⭐⭐⭐⭐⭐</span>
+            </div>
+                <div class="depoimentos-carousel">
+                    <p class="depoimento-text">
+                        Clínica excelente, faço Pilates e drenagem linfática com a Emlyn a 3 anos, ótima profissional, muito dedicada e competente! Super recomendo 👏👏</p>
+                        <p class="depoimento-autor">— Rosemeire Margarete</p>
+                    </div>
+
+                    <div class="depoimento">
+                        <p class="depoimento-text">Adorei a liberação miofascial, que dissolve os pontos de tensão em qualquer lugar do corpo. Excelente profissional, recomendo muito!!</p>
+                        <p class="depoimento-autor">— Patrícia Backes</p>
+                    </div>
+
+                    <div class="depoimento">
+                        <p class="depoimento-text">Esse depoimento precisa falar sobre a Massagem relaxante</p>
+                        <p class="depoimento-autor">— Heloísa Thomaz Ribeiro</p>
+                    </div>
                 </div>
-                <div class="depoimento">
-                    <p class="depoimento-text">O Pilates aqui é completamente diferente. Não é só exercício, é um momento só meu, onde eu consigo me reconectar com o meu corpo.</p>
-                    <p class="depoimento-autor">— Ana Paula R.</p>
+
+                <!-- COLUNA 2 -->
+                <div class="depoimentos-carousel">
+                    <div class="depoimento">
+                        <p class="depoimento-text">A Emlyn e uma excelente profissional e a Clínica é Maravilhosa, faço Pilates e estou muito satisfeito com tudo, nota mil.!</p>
+                        <p class="depoimento-autor">— Luis Claudio Castro Vazarim</p>
+                    </div>
+
+                    <div class="depoimento">
+                        <p class="depoimento-text">Fisioterapia</p>
+                        <p class="depoimento-autor">— Veronica Branco</p>
+                    </div>
+
+                    <div class="depoimento">
+                        <p class="depoimento-text">Pilates</p>
+                        <p class="depoimento-autor">— Daniela Natalia Tononi Rodrigues</p>
+                    </div>
                 </div>
+
+                <!-- COLUNA 3 -->
+                <div class="depoimentos-carousel">
+                    <div class="depoimento">
+                        <p class="depoimento-text">LIBERAÇÂO MIOFASCIAL</p>
+                        <p class="depoimento-autor">— Eduardo Rebello</p>
+                    </div>
+
+                    <div class="depoimento">
+                        <p class="depoimento-text">MASSAGEM!</p>
+                        <p class="depoimento-autor">— Eduardo Rebello</p>
+                    </div>
+
                 <div class="depoimento">
-                    <p class="depoimento-text">Atendimento incrível, ambiente acolhedor. Parece que entro em outro mundo quando chego na Inove. Super recomendo!</p>
-                    <p class="depoimento-autor">— Juliana M.</p>
+                <p class="depoimento-text">Pilates!</p>
+                <p class="depoimento-autor">— Eduardo Rebello</p>
                 </div>
                 <div class="carousel-dots">
                     <span class="dot active" data-slide="0"></span>
                     <span class="dot" data-slide="1"></span>
                     <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                    <span class="dot" data-slide="5"></span>
+                    <span class="dot" data-slide="6"></span>
+                    <span class="dot" data-slide="7"></span>
+                    <span class="dot" data-slide="8"></span>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-depoimentos">
                 <h2>Vamos agendar sua aula?</h2>
                 <a href="https://wa.me/5516991778083?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o" class="btn btn-secondary" target="_blank">Fale com a gente pelo WhatsApp</a>
             </div>
@@ -679,49 +740,127 @@
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        
+    /* ========================================
+       MENU MOBILE - Toggle do hamburger
+       ======================================== */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    /* Fecha o menu ao clicar em qualquer link */
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
         });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
-        
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, observerOptions);
-        document.querySelectorAll('.animate-on-scroll, .card, .servico-card, .step').forEach(el => observer.observe(el));
-        
-        const painPoints = document.querySelectorAll('.pain-points p');
-        setTimeout(() => {
-            painPoints.forEach((p, i) => setTimeout(() => p.classList.add('visible'), i * 300));
-        }, 500);
-        
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.depoimento');
-        const dots = document.querySelectorAll('.dot');
-        function showSlide(n) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            if (n >= slides.length) currentSlide = 0;
-            if (n < 0) currentSlide = slides.length - 1;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+    });
+    
+    
+    /* ========================================
+       HEADER - Efeito scroll
+       ======================================== */
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
-        dots.forEach((dot, i) => dot.addEventListener('click', () => { currentSlide = i; showSlide(currentSlide); }));
-        setInterval(() => { currentSlide++; showSlide(currentSlide); }, 6000);
+    });
+    
+    
+    /* ========================================
+       ANIMAÇÕES - Intersection Observer
+       ======================================== */
+    const observerOptions = { 
+        threshold: 0.1, 
+        rootMargin: '0px 0px -50px 0px' 
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    /* Observa todos os elementos que devem animar */
+    document.querySelectorAll('.animate-on-scroll, .card, .servico-card, .step').forEach(el => {
+        observer.observe(el);
+    });
+    
+    
+    /* ========================================
+       PAIN POINTS - Animação sequencial
+       ======================================== */
+    const painPoints = document.querySelectorAll('.pain-points p');
+    
+    setTimeout(() => {
+        painPoints.forEach((p, i) => {
+            setTimeout(() => p.classList.add('visible'), i * 300);
+        });
+    }, 500);
+    
+    
+    /* ========================================
+       CARROSSEL DE DEPOIMENTOS - NOVO
+       SEM timer automático
+       COM setas prev/next
+       ======================================== */
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.depoimento');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    /* Função principal que mostra o slide */
+    function showSlide(n) {
+        /* Remove active de todos */
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        /* Controla o loop (volta ao início ou final) */
+        if (n >= slides.length) {
+            currentSlide = 0;
+        }
+        if (n < 0) {
+            currentSlide = slides.length - 1;
+        }
+        
+        /* Ativa o slide e dot correto */
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+    
+    /* Botão ANTERIOR */
+    prevBtn.addEventListener('click', () => {
+        currentSlide--;
+        showSlide(currentSlide);
+    });
+    
+    /* Botão PRÓXIMO */
+    nextBtn.addEventListener('click', () => {
+        currentSlide++;
+        showSlide(currentSlide);
+    });
+    
+    /* Clique nos DOTS */
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            currentSlide = i;
+            showSlide(currentSlide);
+        });
+    });
+    
+    /* REMOVIDO: setInterval automático */
+
     </script>
 </body>
 </html>
