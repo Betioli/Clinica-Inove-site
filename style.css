@@ -319,142 +319,13 @@
         ----------COMO FUNCIONA E DEPOIMENTOS------------
         ==========================================================================*/
 
-        .como-funciona-depoimentos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1 4px; 
-            background: linear-gradient(180deg, #FFF 0%, #FAF9F7 100%); 
-            padding: 96px 0; 
-            border:#752F92 1px solid;
-            height: 95vh;
-            
-        }
-        @media (max-width: 1100px) {
-            .como-funciona-depoimentos {
-            grid-template-columns: 1fr;
-            gap: 32px;
-            }
-        }
-        
-        /* NOVO: Steps em coluna com linha tracejada vertical */
-        .container-como-funciona {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 90vh;
-            border-right: #D62F39 5px solid;
-
-            
-        }
-        .como-funciona-title h2 {
-            color: #D62F39;
-            margin-bottom: 24px; 
-            font-size: 28px;
-            text-align: center;
-        }
-        .steps {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: relative;
-            margin-top: 1px;
-            gap: 80px; /* Aumentado o gap entre os steps */
-            min-height: 340px;
-        }
-        .steps::before {
-            content: '';
-            position: absolute;
-            left: 79px;
-            top: 40px;
-            width: 0;
-            height: calc(100% - 80px);
-            border-left: 2px dashed #752F92;
-            z-index: 0;
-        }
-        @media (max-width: 768px) {
-            .steps {
-            align-items: center;
-            margin-top: 32px;
-            }
-            .steps::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-        .step {
-            display: flex;
-            align-items: flex-start;
-            position: relative;
-            z-index: 1;
-            background: none;
-            width: 100%;
-            gap: 0 32px; /* Espaço horizontal entre número e texto */
-        }
-        .step-number { 
-            width: 60px; 
-            height: 60px; 
-            background: #752F92; 
-            color: #FFF; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 22px; 
-            font-weight: 600; 
-            box-shadow: 0 8px 24px rgba(117,47,146,0.2); 
-            flex-shrink: 0;
-            margin-right: 32px;
-            margin-left: 50px;
-            position: relative;
-            z-index: 2;
-        }
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1px; /* Espaço entre h3 e p */
-        }
-        .step h3, .step p {
-            text-align: left;
-        }
-        .step h3 {
-            margin-bottom: 0;
-            color: #752F92;
-            font-size: 18px;
-        }
-        .step p {
-            font-size: 16px;
-            color: #5A5A5A;
-            margin-bottom: 0;
-        }
-        @media (max-width: 768px) {
-            .step {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            gap: 16px 0;
-            }
-            .step-number {
-            margin: 0 0 16px 0;
-        }
-        .step-content {
-            align-items: center;
-            }
-            .step h3, .step p {
-            text-align: center;
-            }
-        }
 
         /* ==========================================================================
         DEPOIMENTOS - CARROSSEL 3 COLUNAS
         ========================================================================== */
 
-        .depoimentos {
-            background: red;
-            padding: 10px 40px;
-            align-items: center;
-            justify-content: center;
-            height: 90vh;
-        } 
+        .depoimentos { background: #FFF; padding: 96px 0; }
+
         .container-depoimentos {
         }
         .depoimentos-title h2 {
@@ -463,13 +334,10 @@
             font-size: 28px;
             text-align: center;
         }
-        .depoimentos-carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        } 
+        .depoimentos-carousel { max-width: 900px; margin: 64px auto 0; position: relative; } 
         .carousel-track {
             display: flex;
-        } 
+        }
         .carousel-slide {
             width: 100%;
             box-sizing: border-box;
@@ -478,7 +346,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr; } 
         
-            .depoimentos-coluna {
+        .depoimentos-coluna {
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(117,47,146,0.08);
