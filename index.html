@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pilates, fisioterapia e cuidados corporais em Ribeirão Preto. Aqui você respira, solta e volta a se sentir leve.">
-    <link rel="icon" href="favicon.ico" type="image/logo-clinica.png">
+    <link rel="icon" href="image/logo-Clinica-Inove.png" type="image.png">
     <title>Clínica Inove - Estúdio de Movimento e Leveza</title>
 
     <style>
@@ -532,19 +532,6 @@
         }
         
         /* ==========================================================================
-        COMO FUNCIONA
-        ========================================================================== 
-        .como-funciona { background: linear-gradient(180deg, #FFF 0%, #FAF9F7 100%); padding: 96px 0; }
-        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; position: relative; }
-        @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } }
-        .steps::before { content: ''; position: absolute; top: 40px; left: 16.66%; right: 16.66%; height: 2px; background: linear-gradient(to right, #752F92 0%, #752F92 50%, transparent 50%, transparent 100%); background-size: 20px 2px; z-index: 0; }
-        @media (max-width: 768px) { .steps::before { display: none; } }
-        .step { text-align: center; position: relative; z-index: 1; }
-        .step-number { width: 80px; height: 80px; margin: 0 auto 24px; background: #752F92; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; box-shadow: 0 8px 24px rgba(117,47,146,0.2); }
-        .step h3 { margin-bottom: 16px; color: #752F92; }
-        .step p { font-size: 16px; color: #5A5A5A; }*/
-        
-        /* ==========================================================================
         LOCALIZAÇÃO
         ========================================================================== */
         .localizacao { background: #FFF; padding: 96px 0; }
@@ -567,7 +554,7 @@
         RODAPÉ
         ========================================================================== */
         footer { background: #FFF; border-top: 1px solid rgba(117,47,146,0.08); padding: 64px 0 32px; }
-        .footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+        .footer-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; margin-bottom: 48px; }
         @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 32px; text-align: center; } }
         .footer-col h4 { font-size: 18px; margin-bottom: 20px; color: #752F92; }
         .footer-col p, .footer-col a { font-size: 16px; color: #5A5A5A; text-decoration: none; line-height: 1.8; display: block; margin-bottom: 8px; transition: color 0.3s; }
@@ -575,8 +562,20 @@
         .footer-tagline { color: #8E8E8E; font-size: 15px; margin-top: 12px; }
         .social-link { display: inline-flex; align-items: center; gap: 8px; }
         .social-link svg { width: 20px; height: 20px; }
-        .footer-bottom { text-align: center; padding-top: 32px; border-top: 1px solid rgba(117,47,146,0.08); color: #8E8E8E; font-size: 14px; }
-        
+        .footer-bottom { display: grid; grid-template-columns: repeat(3, 1fr);text-align: center; padding-top: 32px; border-top: 1px solid rgba(117,47,146,0.08); color: #8E8E8E; font-size: 14px; }
+        .footer-bottom a {
+            content: 'BMS | Tráfego pago';
+            text-decoration: none;
+            font-weight: 500;
+        } 
+        .footer-bottom a {
+            content: 'S';
+            color: #222222;   
+        } 
+        .footer-bottom a {
+            content: 'M';
+            color: #ff3131;
+        }
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
         
@@ -858,35 +857,10 @@
         </div>
     </section>
 
-    <!--section class="como-funciona">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Como funciona</h2>
-            </div>
-            <div class="steps">
-                <div class="step animate-on-scroll">
-                    <div class="step-number">1</div>
-                    <h3>Entre em contato pelo WhatsApp</h3>
-                    <p>Manda uma mensagem e a gente conversa sobre o que você precisa</p>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">2</div>
-                    <h3>Agende sua primeira sessão</h3>
-                    <p>Escolhemos juntos o melhor horário pra você</p>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">3</div>
-                    <h3>Comece a se sentir melhor</h3>
-                    <p>Já na primeira sessão você sente a diferença</p>
-                </div>
-            </div>
-        </div>
-    </section-->
-
     <section class="localizacao">
         <div class="container">
             <div class="section-title animate-on-scroll">
-                <h2>Onde a gente está</h2>
+                <h2>Onde estamos</h2>
             </div>
             <div class="localizacao-content animate-on-scroll">
                 <div class="localizacao-icon">
@@ -928,13 +902,6 @@
                     <p class="footer-tagline">Estúdio de movimento e leveza</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Serviços</h4>
-                    <a href="pilates.html">Pilates</a>
-                    <a href="fisioterapia.html">Fisioterapia</a>
-                    <a href="drenagem.html">Drenagem Linfática</a>
-                    <a href="massagem.html">Massagem Relaxante</a>
-                </div>
-                <div class="footer-col">
                     <h4>Contato</h4>
                     <a href="https://wa.me/5516991778083" target="_blank">WhatsApp: (16) 99177-8083</a>
                     <a href="https://www.instagram.com/clinicainoveribeirao/" target="_blank" class="social-link">
@@ -951,6 +918,8 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 Clínica Inove — Feito com cuidado</p>
+                <p>Política de Privacidade</p>
+                <p>Desenvolvido por <a href="https://www.instagram.com/bms_trafego" target="_blank"><strong>BMS</strong> | Tráfego pago</a></p>
             </div>
         </div>
     </footer>
