@@ -110,7 +110,77 @@
         .card h3 { margin-bottom: 16px; color: #752F92; }
         .card p { font-size: 16px; color: #5A5A5A; }
                 
-        /*FIM PARA QUEM*/
+        /*/* ==========================================================================
+        ----------SOBRE MIM------------
+        /* ==========================================================================*/
+
+        .sobre-mim {
+            background: url('image/sobre-mim-fundo-roxo-1.jpg') no-repeat center center;
+            padding: 50px 40px;
+            background-size: cover;
+            opacity: 0.9;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+            align-items: center;
+        }
+        .sobre-mim-content {
+            display: grid;
+            grid-template-columns: 390px 1fr; /* fixo para imagem, flexível para texto */
+            gap: 124px; /* diminui o espaço entre img e texto */
+            align-items: center;
+        }
+        .sobre-mim-img img {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            width: 390px;
+        }
+
+        /*.card-img-2 {
+        
+        }
+        .card-img-2 img {*/
+            
+        .sobre-mim-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 0; /* remove margem extra */
+            max-width: 100%;
+            gap: 16px;
+            
+        }
+        .sobre-mim-text h2 {
+            font-family: 'fonts/Montserrat-Bold.woff2';
+            margin-bottom: 26px;
+            font-size: 38px;
+            padding-top: 10px;
+            color: #fff;
+        }
+        .sobre-mim-text p {
+            font-family: 'fonts/Montserrat-Regular.woff2';
+            font-size: 16px;
+            color: #fff;
+            line-height: 1.4;
+            font-weight: 200;
+        }
+        .sobre-mim-text a {
+            color: #fff;
+            line-height: 1.8;
+            font-size: 19px;
+            font-family:'fonts/Montserrat-Regular.woff2';
+        }   
+        @media (max-width: 900px) {
+            .sobre-mim-content {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                text-align: center;
+            }
+            .sobre-mim-img {
+                justify-content: center;
+            }
+        }
 
         /*/* ==========================================================================
         ----------NOSSOS SERVIÇOS------------
@@ -211,64 +281,255 @@
         /* ==========================================================================
         DEPOIMENTOS - CARROSSEL 1 COLUNAS
         ========================================================================== */
-        .depoimentos {
+        /* ========================================
+        SEÇÃO DEPOIMENTOS - Background e estrutura
+        ======================================== */
+    .depoimentos {
         height: 600px;
         background: url('image/depoimentos-fundo-roxo-2.jpg');
-        background-size: cover; /* Faz a imagem cobrir toda a área */
-        background-position: center; /* Centraliza a imagem */
-        background-repeat: no-repeat; /* Evita repetição */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         padding: 56px 0;
-        }
-        .avaliacao-google {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
-        }
+        position: relative; /* IMPORTANTE: para o ::before funcionar */
+    }
 
-        .google-icon {
-        width: 20px;
-        height: 20px;
-        }   
-
-        .avaliacao-google span {
-        font-size: 0.9rem;
-        color: #666;
-        }
-        .depoimentos::before {
+    /* Camada escura sobre o background */
+    .depoimentos::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.3); /* Camada escura semi-transparente */
+        background: rgba(0, 0, 0, 0.3);
         z-index: 1;
-        }
+    }
 
-        .depoimentos .container {
-            position: relative;
-            z-index: 2; /* Coloca o conteúdo acima da camada escura */
-        }
-        .depoimentos-title h2 {
-            color: #fff;
-            margin-bottom: 4px; 
-            font-size: 28px;
-            text-align: center;
-        }
-        .depoimentos-carousel { max-width: 750px; margin: 24px auto 0; position: relative; height: auto; }
-        .depoimento { background: rgb(192, 192, 192); border-radius: 24px; padding: 48px; text-align: center; position: relative; display: none; }
-        .depoimento.active { display: block; animation: fadeIn 0.6s ease-out; height: 220px;}
-        
-        .depoimento-text { font-size: 17px; line-height: 1.8; color: #000000; margin-bottom: 24px; font-style: italic; border-bottom: 1px solid black;}
-        .depoimento-autor { font-weight: 500; color: #752F92; font-size: 18px; }
-        .carousel-dots { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgb(0, 0, 0); cursor: pointer; transition: all 0.3s; }
-        .dot.active { background: #fff; transform: scale(1.2); }
+    /* Container acima da camada escura */
+    .depoimentos .container {
+        position: relative;
+        z-index: 2;
+    }
 
-        .cta-depoimentos { padding-top: 20px; text-align: center; position: relative; z-index: 1; }
+    /* Título da seção */
+    .depoimentos-title h2 {
+        color: #fff;
+        margin-bottom: 4px; 
+        font-size: 28px;
+        text-align: center;
+    }
+
+    /* ========================================
+    AVALIAÇÃO GOOGLE
+    ======================================== */
+    .avaliacao-google {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Centraliza */
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .google-icon {
+        width: 30px;
+        height: 30px;
+    }   
+
+    .avaliacao-google span {
+        font-size: 0.9rem;
+        color: #fff; /* Branco para contrastar com fundo escuro */
+        font-weight: 500;
+    }
+
+    /* ========================================
+    CARROSSEL DE DEPOIMENTOS
+    ======================================== */
+    .depoimentos-carousel { 
+        max-width: 750px; 
+        margin: 24px auto 0; 
+        position: relative; 
+        height: auto;
+        padding: 0 70px; /* Espaço para as setas */
+    }
+
+    /* Cards de depoimento */
+    .depoimento { 
+        background: rgb(192, 192, 192); 
+        border-radius: 24px; 
+        padding: 48px; 
+        text-align: center; 
+        position: relative; 
+        display: none;
+    }
+
+    .depoimento.active { 
+        display: block; 
+        animation: fadeIn 0.6s ease-out; 
+        height: 220px;
+    }
+
+    /* Texto do depoimento */
+    .depoimento-text { 
+        font-size: 17px; 
+        line-height: 1.8; 
+        color: #000000; 
+        margin-bottom: 24px; 
+        font-style: italic; 
+        border-bottom: 1px solid black;
+    }
+
+    /* Autor do depoimento */
+    .depoimento-autor { 
+        font-weight: 500; 
+        color: #752F92; 
+        font-size: 18px; 
+    }
+
+    /* ========================================
+    SETAS DE NAVEGAÇÃO - Nas extremidades do card
+    ======================================== */
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid #752F92;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 2.5rem;
+        line-height: 1;
+        color: #752F92;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        display: flex;
+        align-items: top;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .carousel-arrow:hover {
+        background: #752F92;
+        color: #fff;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 12px rgba(117, 47, 146, 0.3);
+    }
+
+    /* Seta ESQUERDA - na extremidade esquerda do card */
+    .carousel-arrow-prev {
+        left: 0;
+    }
+
+    /* Seta DIREITA - na extremidade direita do card */
+    .carousel-arrow-next {
+        right: 0;
+    }
+
+    /* ========================================
+    DOTS DE NAVEGAÇÃO
+    ======================================== */
+    .carousel-dots { 
+        display: flex; 
+        justify-content: center; 
+        gap: 12px; 
+        margin-top: 32px; 
+    }
+
+    .dot { 
+        width: 12px; 
+        height: 12px; 
+        border-radius: 50%; 
+        background: rgb(0, 0, 0); 
+        cursor: pointer; 
+        transition: all 0.3s; 
+    }
+
+    .dot.active { 
+        background: #fff; 
+        transform: scale(1.2); 
+    }
+
+    .dot:hover {
+        opacity: 0.7;
+    }
+
+    /* ========================================
+    CTA (Call to Action)
+    ======================================== */
+    .cta-depoimentos { 
+        padding-top: 20px; 
+        text-align: center; 
+        position: relative; 
+        z-index: 1; 
+    }
+
+    .cta-depoimentos h2 { 
+        color: #FFF; 
+        margin-bottom: 16px;
+    }
+    .btn-secondary {
+        background: #FFF; 
+        color: #752F92; 
+        font-weight: 800; 
+        box-shadow: 0 4px 16px rgba(117,47,146,0.2); 
+        text-decoration: none; 
+        border-radius: 12px; 
+        font-size: 17px;
+        padding:16px 40px;
+    }
+
+    /* ========================================
+    ANIMAÇÃO FADE IN
+    ======================================== */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ========================================
+    RESPONSIVO - Mobile
+    ======================================== */
+    @media (max-width: 768px) {
+        .depoimentos {
+            height: auto;
+            min-height: 600px;
+        }
         
-        .cta-depoimentos h2 { color: #FFF; margin-bottom: 16px; }
+        .depoimentos-carousel {
+            padding: 0 60px; /* Menos espaço nas setas em mobile */
+        }
+        
+        .carousel-arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 2rem;
+        }
+        
+        .depoimento {
+            padding: 32px 24px;
+        }
+        
+        .depoimento.active {
+            height: auto;
+            min-height: 220px;
+        }
+        
+        .depoimento-text {
+            font-size: 15px;
+        }
+        
+        .depoimento-autor {
+            font-size: 16px;
+        }
+        }
         
         /* ==========================================================================
         COMO FUNCIONA
@@ -302,6 +563,9 @@
         .cta-content p { font-size: 20px; margin-bottom: 32px; color: rgba(255,255,255,0.9); }
         .cta-horario { margin-top: 24px; font-size: 16px; color: rgba(255,255,255,0.8); }
         
+        /* ==========================================================================
+        RODAPÉ
+        ========================================================================== */
         footer { background: #FFF; border-top: 1px solid rgba(117,47,146,0.08); padding: 64px 0 32px; }
         .footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
         @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 32px; text-align: center; } }
@@ -316,73 +580,6 @@
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
         
-        .sobre-mim {
-            background: url('image/sobre-mim-fundo-roxo-1.jpg') no-repeat center center;
-            padding: 50px 40px;
-            background-size: cover;
-            opacity: 0.9;
-            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-            align-items: center;
-        }
-        .sobre-mim-content {
-            display: grid;
-            grid-template-columns: 390px 1fr; /* fixo para imagem, flexível para texto */
-            gap: 124px; /* diminui o espaço entre img e texto */
-            align-items: center;
-        }
-        .sobre-mim-img img {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            width: 390px;
-        }
-
-        /*.card-img-2 {
-        
-        }
-        .card-img-2 img {*/
-            
-        .sobre-mim-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 0; /* remove margem extra */
-            max-width: 100%;
-            gap: 16px;
-            
-        }
-        .sobre-mim-text h2 {
-            font-family: 'fonts/Montserrat-Bold.woff2';
-            margin-bottom: 26px;
-            font-size: 38px;
-            padding-top: 10px;
-            color: #fff;
-        }
-        .sobre-mim-text p {
-            font-family: 'fonts/Montserrat-Regular.woff2';
-            font-size: 16px;
-            color: #fff;
-            line-height: 1.4;
-            font-weight: 200;
-        }
-        .sobre-mim-text a {
-            color: #fff;
-            line-height: 1.8;
-            font-size: 19px;
-            font-family:'fonts/Montserrat-Regular.woff2';
-        }   
-        @media (max-width: 900px) {
-            .sobre-mim-content {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                text-align: center;
-            }
-            .sobre-mim-img {
-                justify-content: center;
-            }
-        }
     </style>
 </head>
 <body>
@@ -566,61 +763,79 @@
             <div class="depoimentos-title">
                 <h2>O QUE NOSSOS PACIENTES DIZEM</h2>
             </div>
-            <div class="depoimentos-carousel">
-                <div class="avaliacao-google">
-                <img src="image/icon-google-logo-48.png" alt="Google" class="google-icon"><span>(5,0)⭐⭐⭐⭐⭐</span>
+            
+            <!-- AVALIAÇÃO GOOGLE - Fixa no topo -->
+            <div class="avaliacao-google">
+                <img src="image/icon-google-logo-48.png" alt="Google" class="google-icon">
+                <span>(5,0)⭐⭐⭐⭐⭐</span>
             </div>
-                <div class="depoimentos-carousel">
-                    <p class="depoimento-text">
-                        Clínica excelente, faço Pilates e drenagem linfática com a Emlyn a 3 anos, ótima profissional, muito dedicada e competente! Super recomendo 👏👏</p>
-                        <p class="depoimento-autor">— Rosemeire Margarete</p>
-                    </div>
-
-                    <div class="depoimento">
-                        <p class="depoimento-text">Adorei a liberação miofascial, que dissolve os pontos de tensão em qualquer lugar do corpo. Excelente profissional, recomendo muito!!</p>
-                        <p class="depoimento-autor">— Patrícia Backes</p>
-                    </div>
-
-                    <div class="depoimento">
-                        <p class="depoimento-text">Esse depoimento precisa falar sobre a Massagem relaxante</p>
-                        <p class="depoimento-autor">— Heloísa Thomaz Ribeiro</p>
-                    </div>
+            
+            <div class="depoimentos-carousel">
+                <!-- SETA ESQUERDA -->
+                <button class="carousel-arrow carousel-arrow-prev" id="prevBtn" aria-label="Depoimento anterior">
+                    &#8249;
+                </button>
+                
+                <!-- DEPOIMENTO 1 -->
+                <div class="depoimento active">
+                    <p class="depoimento-text">Clínica excelente, faço Pilates e drenagem linfática com a Emlyn a 3 anos, ótima profissional, muito dedicada e competente! Super recomendo 👏👏</p>
+                    <p class="depoimento-autor">— Rosemeire Margarete</p>
                 </div>
 
-                <!-- COLUNA 2 -->
-                <div class="depoimentos-carousel">
-                    <div class="depoimento">
-                        <p class="depoimento-text">A Emlyn e uma excelente profissional e a Clínica é Maravilhosa, faço Pilates e estou muito satisfeito com tudo, nota mil.!</p>
-                        <p class="depoimento-autor">— Luis Claudio Castro Vazarim</p>
-                    </div>
-
-                    <div class="depoimento">
-                        <p class="depoimento-text">Fisioterapia</p>
-                        <p class="depoimento-autor">— Veronica Branco</p>
-                    </div>
-
-                    <div class="depoimento">
-                        <p class="depoimento-text">Pilates</p>
-                        <p class="depoimento-autor">— Daniela Natalia Tononi Rodrigues</p>
-                    </div>
-                </div>
-
-                <!-- COLUNA 3 -->
-                <div class="depoimentos-carousel">
-                    <div class="depoimento">
-                        <p class="depoimento-text">LIBERAÇÂO MIOFASCIAL</p>
-                        <p class="depoimento-autor">— Eduardo Rebello</p>
-                    </div>
-
-                    <div class="depoimento">
-                        <p class="depoimento-text">MASSAGEM!</p>
-                        <p class="depoimento-autor">— Eduardo Rebello</p>
-                    </div>
-
+                <!-- DEPOIMENTO 2 -->
                 <div class="depoimento">
-                <p class="depoimento-text">Pilates!</p>
-                <p class="depoimento-autor">— Eduardo Rebello</p>
+                    <p class="depoimento-text">Adorei a liberação miofascial, que dissolve os pontos de tensão em qualquer lugar do corpo. Excelente profissional, recomendo muito!!</p>
+                    <p class="depoimento-autor">— Patrícia Backes</p>
                 </div>
+
+                <!-- DEPOIMENTO 3 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">Esse depoimento precisa falar sobre a Massagem relaxante</p>
+                    <p class="depoimento-autor">— Heloísa Thomaz Ribeiro</p>
+                </div>
+
+                <!-- DEPOIMENTO 4 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">A Emlyn e uma excelente profissional e a Clínica é Maravilhosa, faço Pilates e estou muito satisfeito com tudo, nota mil.!</p>
+                    <p class="depoimento-autor">— Luis Claudio Castro Vazarim</p>
+                </div>
+
+                <!-- DEPOIMENTO 5 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">Fisioterapia</p>
+                    <p class="depoimento-autor">— Veronica Branco</p>
+                </div>
+
+                <!-- DEPOIMENTO 6 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">Pilates</p>
+                    <p class="depoimento-autor">— Daniela Natalia Tononi Rodrigues</p>
+                </div>
+
+                <!-- DEPOIMENTO 7 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">LIBERAÇÃO MIOFASCIAL</p>
+                    <p class="depoimento-autor">— Eduardo Rebello</p>
+                </div>
+
+                <!-- DEPOIMENTO 8 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">MASSAGEM!</p>
+                    <p class="depoimento-autor">— Eduardo Rebello</p>
+                </div>
+
+                <!-- DEPOIMENTO 9 -->
+                <div class="depoimento">
+                    <p class="depoimento-text">Pilates!</p>
+                    <p class="depoimento-autor">— Eduardo Rebello</p>
+                </div>
+                
+                <!-- SETA DIREITA -->
+                <button class="carousel-arrow carousel-arrow-next" id="nextBtn" aria-label="Próximo depoimento">
+                    &#8250;
+                </button>
+                
+                <!-- DOTS -->
                 <div class="carousel-dots">
                     <span class="dot active" data-slide="0"></span>
                     <span class="dot" data-slide="1"></span>
@@ -634,6 +849,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="container">
             <div class="cta-depoimentos">
                 <h2>Vamos agendar sua aula?</h2>
